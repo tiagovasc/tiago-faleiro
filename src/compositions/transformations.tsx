@@ -77,23 +77,20 @@ export default function Transformations(): JSX.Element {
   }, [])
 
   useEffect(() => {
-    if (!emblaApi || reInitCount >= 10) return
-    setReInitCount(reInitCount + 1)
-    emblaApi.reInit()
+    if (!emblaApi) return
 
     emblaApi.on('pointerDown', stopAutoScroll)
     emblaApi.on('settle', startAutoScroll)
 
     startAutoScroll()
     return () => stopAutoScroll()
-  }, [
-    reInitCount,
-    isInView,
-    slideCount,
-    emblaApi,
-    startAutoScroll,
-    stopAutoScroll
-  ])
+  }, [slideCount, emblaApi, startAutoScroll, stopAutoScroll])
+
+  useEffect(() => {
+    if (!emblaApi || reInitCount >= 10 || !isInView) return
+    setReInitCount(reInitCount + 1)
+    emblaApi.reInit()
+  }, [reInitCount, isInView, emblaApi])
 
   return (
     <section
