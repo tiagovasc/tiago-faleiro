@@ -41,7 +41,8 @@ const articles = [
   { title: 'In-depth on Fiber', src: img13 }
 ]
 
-const startIndex = Math.floor(articles.length / 2)
+//const startIndex = Math.floor(articles.length / 2)
+const startIndex = 0
 
 export default function Articles(): JSX.Element {
   const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex })
@@ -72,7 +73,7 @@ export default function Articles(): JSX.Element {
 
   return (
     <section id="articles" className="flex flex-col gap-10 py-20">
-      <p className="font-bold text-center">ARTICLES</p>
+      <p className="font-bold text-center text-4xl">ARTICLES</p>
       <div className="relative flex items-center justify-center">
         <div className="flex absolute z-[1] text-8xl translate-x-[-9999px]">
           <FaCaretLeft
@@ -98,12 +99,15 @@ export default function Articles(): JSX.Element {
         <div ref={emblaRef}>
           <div className="flex">
             {articles.map(({ title, src }, i) => (
-              <motion.div className="flex flex-col gap-5 w-64 mx-5">
-                <motion.img
-                  animate={{
-                    opacity: i === selectedIndex ? 1 : 0.2,
-                    pointerEvents: i === selectedIndex ? 'auto' : 'none'
-                  }}
+              <motion.div
+                animate={{
+                  opacity: i === selectedIndex ? 1 : 0.2,
+                  pointerEvents: i === selectedIndex ? 'auto' : 'none'
+                }}
+                className="flex flex-col gap-5 w-64 mx-5"
+              >
+                <img
+                  alt="article"
                   className="w-full rounded-xl shadow"
                   src={src}
                 />

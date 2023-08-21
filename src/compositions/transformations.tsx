@@ -99,10 +99,11 @@ export default function Transformations(): JSX.Element {
       className="flex flex-col gap-10 items-center py-20"
     >
       <TailwindBreakpoint onChange={handleWindowChange} />
-      <p ref={imgWidthRef} className="text-blue-400 font-bold text-center w-64">
+      <p className="text-blue-400 font-bold text-center text-4xl">
         TRANSFORMATIONS
       </p>
       <div className="w-full max-w-screen overflow-clip">
+        <div ref={imgWidthRef} className="w-64 invisible"></div>
         <div ref={emblaRef} className="mx-auto w-screen">
           <div className="flex">
             {slides.map(index => (

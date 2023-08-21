@@ -6,28 +6,32 @@ export default function SigningUp(): JSX.Element {
 
   return (
     <motion.section
-      initial={{ height: '200px' }}
-      animate={{ height: expand ? 'auto' : '200px' }}
+      initial={{ height: '0px' }}
+      animate={{ height: expand ? 'auto' : '4rem' }}
       id="signing-up"
-      className="relative bg-blue-400 text-gray-100 dark:text-gray-800 overflow-hidden"
+      className="relative bg-blue-400 text-gray-100 dark:text-gray-800 overflow-hidden -mt-1"
     >
       <motion.div
         animate={{
           opacity: expand ? 0 : 1,
           pointerEvents: expand ? 'none' : 'auto'
         }}
-        className="flex flex-col items-center justify-end p-5 absolute w-full h-full top-0 right-0 bg-gradient-to-t from-blue-400"
+        className="z-[1] flex flex-col items-center justify-end p-5 absolute w-full h-full top-0 right-0"
       >
         <button
           onClick={() => setExpand(true)}
           className="text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-6 py-2 rounded-full font-bold shadow w-fit hover:opacity-75"
         >
-          More info
+          More Info About Pricing
         </button>
       </motion.div>
       <div className="px-10 pb-20">
-        <div className="flex flex-col gap-5 max-w-4xl mx-auto">
-          <div className="text-sm flex flex-col gap-5">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: expand ? 1 : 0 }}
+          className="flex flex-col gap-5 max-w-4xl mx-auto"
+        >
+          <div className="flex flex-col gap-5">
             <p>
               With both the Gold and Silver packages, you get a completely
               individualized plan to reach your goals. The difference is the
@@ -83,7 +87,7 @@ export default function SigningUp(): JSX.Element {
               specific recipes, and more.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   )

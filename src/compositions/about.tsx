@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 export default function About(): JSX.Element {
   return (
     <section id="about" className="flex flex-col gap-10 items-center py-24">
-      <p className="text-blue-400 font-bold">ABOUT</p>
+      <p className="text-4xl text-blue-400 font-bold">ABOUT</p>
       <AboutParagraph className="text-lg font-medium lg:text-3xl max-w-xl lg:max-w-4xl mx-10">
         My name is Tiago. I am in my late 20s and I’m originally from Lisbon,
         although I’m currently living in Slovenia. I work for Renaissance

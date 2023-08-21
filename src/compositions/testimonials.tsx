@@ -39,7 +39,8 @@ const testimonials = [
   }
 ]
 
-const startIndex = Math.floor(testimonials.length / 2)
+//const startIndex = Math.floor(testimonials.length / 2)
+const startIndex = 0
 
 export default function Testimonials(): JSX.Element {
   const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex })
@@ -76,7 +77,7 @@ export default function Testimonials(): JSX.Element {
       id="testimonials"
       className="flex flex-col gap-10 bg-blue-400 py-20 dark:text-gray-800 text-gray-100"
     >
-      <p className="font-bold text-center">TESTIMONIALS</p>
+      <p className="font-bold text-center text-4xl">TESTIMONIALS</p>
       <div className="relative flex items-center justify-center">
         <div className="flex absolute z-[1] text-8xl translate-x-[-9999px]">
           <FaCaretLeft

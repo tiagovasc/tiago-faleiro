@@ -37,7 +37,9 @@ export default function Benefits(): JSX.Element {
       id="benefits"
       className="bg-blue-400 py-20 flex flex-col gap-10 items-center justify-center mb-0"
     >
-      <p className="text-gray-100 dark:text-gray-800 font-bold">BENEFITS</p>
+      <p className="text-gray-100 dark:text-gray-800 font-bold text-4xl">
+        BENEFITS
+      </p>
       <div className="rounded-xl max-w-6xl bg-gray-100 dark:bg-gray-800 shadow-xl -mb-0 ml-10 mr-10 px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 md:py-20 gap-y-10 md:gap-y-20">
           {benefits.map((item, index) => (

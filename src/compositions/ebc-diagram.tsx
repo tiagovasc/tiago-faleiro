@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 
 import ebcChart from 'assets/images/chart.png'
 import ebcChart01 from 'assets/images/chart_01.png'
@@ -23,29 +22,11 @@ const foundations = [
 ]
 
 export default function EbcDiagram(): JSX.Element {
-  const [expand, setExpand] = useState(false)
-
   return (
     <motion.section
-      initial={{ height: '250px' }}
-      animate={{ height: expand ? 'auto' : '250px' }}
       id="ebc-diagram"
       className="relative bg-blue-400 text-gray-100 dark:text-gray-800 overflow-hidden"
     >
-      <motion.div
-        animate={{
-          opacity: expand ? 0 : 1,
-          pointerEvents: expand ? 'none' : 'auto'
-        }}
-        className="flex flex-col items-center justify-end p-5 absolute w-full h-full top-0 right-0 bg-gradient-to-t from-blue-400"
-      >
-        <button
-          onClick={() => setExpand(true)}
-          className="text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-6 py-2 rounded-full font-bold shadow w-fit hover:opacity-75"
-        >
-          More info
-        </button>
-      </motion.div>
       <div className="px-10 pb-20">
         <div className="flex flex-col gap-5 max-w-6xl mx-auto">
           <p className="text-sm max-w-4xl mx-auto">

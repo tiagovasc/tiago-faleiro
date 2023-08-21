@@ -116,9 +116,11 @@ export default function Pricing(): JSX.Element {
       id="pricing"
       className="bg-blue-400 pb-20 flex flex-col gap-10 items-center justify-center mb-0"
     >
-      <p className="text-gray-100 dark:text-gray-800 font-bold">PRICING</p>
+      <p className="text-gray-100 dark:text-gray-800 font-bold text-4xl">
+        PRICING
+      </p>
       <div className="flex flex-col gap-5 items-center">
-        <p className="text-gray-100 dark:text-gray-800 m-10 max-w-4xl text-4xl text-center -mt-3 mb-1">
+        <p className="text-gray-100 dark:text-gray-800 m-10 max-w-4xl text-4xl text-center -mt-3 -mb-2">
           Find the plan that suits your needs.
         </p>
         <div className="text-gray-100 dark:text-gray-800 flex flex-wrap lg:grid grid-cols-2 gap-10 max-w-4xl">
@@ -153,7 +155,6 @@ export default function Pricing(): JSX.Element {
               animate={{ y: 0 }}
               exit={{ y: 20 }}
               transition={{ delay: 0.2 * i }}
-              className={cn(i % 2 ? '' : 'lg:mt-10')}
             >
               <div className="rounded-xl max-w-6xl bg-gray-100 dark:bg-gray-800 shadow-xl px-5 py-5">
                 <div className="flex flex-col gap-5 items-center p-5 md:p-10">

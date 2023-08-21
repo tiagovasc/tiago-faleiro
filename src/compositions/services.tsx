@@ -1,9 +1,7 @@
-import { createRef, useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { FaCaretRight } from 'react-icons/fa'
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 import cn from 'classnames'
-
-import TailwindBreakpoint from 'components/tailwind-breakpoint'
 
 const services = [
   {
@@ -38,87 +36,60 @@ const services = [
 ]
 
 export default function Services(): JSX.Element {
-  const listRefs = Array.from(new Array(3).fill(createRef()))
-  const [maxHeight, setMaxHeight] = useState(0)
-  const [index, setIndex] = useState(0)
-
-  const getMaxListHeight = useCallback(() => {
-    if (listRefs[0].current) {
-      const heights = listRefs.map(ref => ref.current.clientHeight)
-      const maxHeight = Math.max(...heights)
-      setMaxHeight(maxHeight)
-    }
-  }, [listRefs])
-
-  useEffect(() => {
-    getMaxListHeight()
-  }, [getMaxListHeight])
+  const [index, setIndex] = useState<number | null>(null)
 
   return (
     <section
       id="services"
-      className="flex flex-col md:flex-row max-w-screen overflow-hidden"
+      className="flex flex-col items-center max-w-screen overflow-hidden pb-20 px-10 gap-10"
     >
-      <TailwindBreakpoint onChange={getMaxListHeight} />
-      <div className="flex flex-col gap-10 items-center justify-center px-10 py-10 md:py-20 w-full">
-        <p className="text-blue-400 font-bold ">MY SERVICES</p>
-        <div className="max-w-lg 2xl:max-w-2xl text-lg md:text-2xl">
-          <AnimatePresence mode="wait">
-            {services.map(({ title }, i) => (
-              <motion.p
-                onClick={() => setIndex(i)}
-                whileHover={{ opacity: 1 }}
-                animate={{
-                  fontSize: index === i ? '2.25rem' : '1.5rem',
-                  opacity: index === i ? 1 : 0.2,
-                  fontWeight: index === i ? 700 : 500
-                }}
-                className={cn(
-                  'cursor-pointer mb-2',
-                  index === i ? 'text-4xl' : ''
-                )}
-              >
-                <FaCaretRight className="inline" /> {title}
-              </motion.p>
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
-      <AnimatePresence mode="wait">
-        <div
-          key={index + ''}
-          className="flex flex-col items-center justify-center pl-12 pr-10 pt-10 md:pt-20 pb-0 md:pb-20 w-full bg-blue-400 text-gray-100 dark:text-gray-800"
-        >
-          {services.map(({ title, list }, i) => (
-            <ol
-              ref={val => (listRefs[i].current = val)}
-              className={cn(
-                'max-w-lg 2xl:max-w-2xl lg:text-xl list-disc',
-                i === index
-                  ? 'block md:absolute opacity-1 pointer-events-auto'
-                  : 'absolute opacity-0 pointer-events-none'
-              )}
+      <p className="text-blue-400 font-bold text-4xl">MY SERVICES</p>
+      <div className="flex flex-col gap-2 max-w-6xl ml-10 mr-10 w-full text-gray-100 dark:text-gray-800">
+        {services.map(({ title, list }, i) => (
+          <button
+            onClick={index !== i ? () => setIndex(i) : undefined}
+            className={cn(
+              'appearance-none text-left bg-blue-400 flex flex-col p-5 md:p-10 shadow-xl',
+              i + 1 === services.length ? 'rounded-b-xl' : '',
+              index !== i ? 'cursor-pointer' : 'cursor-default',
+              i === 0 ? 'rounded-t-xl' : ''
+            )}
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-lg lg:text-2xl">{title}</p>
+              <motion.span animate={{ opacity: index === i ? 0 : 1 }}>
+                <FaAngleDown className="text-2xl" />
+              </motion.span>
+            </div>
+            <motion.div
+              animate={{ height: index === i ? 'auto' : 0 }}
+              className="overflow-hidden"
             >
-              {list.map((name, _i) => (
-                <motion.li
-                  key={index + ''}
-                  initial={{ opacity: index === i ? 0.2 : 0 }}
-                  whileInView={{
-                    opacity: index === i ? 1 : 0,
-                    pointerEvents: index === i ? 'auto' : 'none'
-                  }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.05 * _i }}
-                  className="mb-2"
-                >
-                  {name}
-                </motion.li>
-              ))}
-            </ol>
-          ))}
-          <div style={{ height: maxHeight }} className="hidden md:block" />
-        </div>
-      </AnimatePresence>
+              <ol className="list-disc px-5 pt-5 md:pt-10 pb-0 md:pb-5">
+                {list.map((name, _i) => (
+                  <motion.li
+                    whileInView={{
+                      opacity: 1,
+                      pointerEvents: 'auto'
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{ delay: 0.05 * _i }}
+                    className="mb-2"
+                  >
+                    {name}
+                  </motion.li>
+                ))}
+              </ol>
+              <button
+                onClick={() => setIndex(null)}
+                className="flex justify-center px-4 mx-auto"
+              >
+                <FaAngleUp className="text-2xl" />
+              </button>
+            </motion.div>
+          </button>
+        ))}
+      </div>
     </section>
   )
 }
