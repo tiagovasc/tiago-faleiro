@@ -1,4 +1,5 @@
 import Transformations from 'compositions/transformations'
+import LastParagraph from 'compositions/last-paragraph'
 import Testimonials from 'compositions/testimonials'
 import EbcDiagram from 'compositions/ebc-diagram'
 import SigningUp from 'compositions/signing-up'
@@ -28,6 +29,7 @@ export default function Home(): JSX.Element {
       <Pricing />
       <SigningUp />
       <Articles />
+      <LastParagraph />
       <Contact />
       <Footer />
     </Page>

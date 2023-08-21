@@ -84,7 +84,7 @@ export default function Services(): JSX.Element {
                 onClick={() => setIndex(null)}
                 className="flex justify-center px-4 mx-auto"
               >
-                <FaAngleUp className="text-2xl" />
+                <FaAngleUp className="text-2xl -mb-2" />
               </button>
             </motion.div>
           </button>

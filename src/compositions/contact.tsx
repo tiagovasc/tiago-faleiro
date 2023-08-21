@@ -1,6 +1,8 @@
 import TiagoLogo2 from 'assets/images/tiagologo_01.png'
 import TiagoLogo from 'assets/images/tiagologo.png'
 
+const formSpreeLink = 'https://formspree.io/f/mvojakva'
+
 export default function Contact(): JSX.Element {
   return (
     <section
@@ -23,7 +25,7 @@ export default function Contact(): JSX.Element {
       </div>
       <form
         className="w-full max-w-md flex flex-col gap-4 text-gray-800 dark:text-gray-100"
-        action="https://formspree.io/f/xpzkllby"
+        action={formSpreeLink}
         method="POST"
       >
         <p className="text-center text-4xl mb-8">Contact Me</p>

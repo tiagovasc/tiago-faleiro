@@ -9,7 +9,7 @@ import TiagoLogo from 'assets/images/tiagologo.png'
 import ThemeToggleButton from 'components/theme-toggle-button'
 import TailwindBreakpoint from 'components/tailwind-breakpoint'
 
-const signUpLink = 'https://tripetto.app/run/IUA2V0LPS6'
+export const signUpLink = 'https://tripetto.app/run/IUA2V0LPS6'
 
 export const links = [
   { name: 'Home', href: '/#hero' },
