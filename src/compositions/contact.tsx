@@ -20,9 +20,6 @@ export default function Contact(): JSX.Element {
             alt="tiago"
           />
         </div>
-        <button className="mx-auto block text-gray-100 bg-blue-400 px-6 py-2 rounded-full font-bold shadow w-fit h-fit hover:opacity-75">
-          Sign Up
-        </button>
       </div>
       <form
         className="w-full max-w-md flex flex-col gap-4 text-gray-800 dark:text-gray-100"
