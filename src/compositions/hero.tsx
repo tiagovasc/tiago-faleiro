@@ -37,7 +37,7 @@ export default function Hero(): JSX.Element {
           alt="background"
         />
       </div>
-      <div className="z-[3] absolute flex items-center justify-center w-full h-full">
+      <div className="z-[3] flex items-center justify-center w-full flex-1 pt-20 pb-10">
         <div className="flex flex-col gap-10 w-full max-w-6xl m-10">
           <p className="text-blue-400 -mb-2 font-bold">
             TIAGO&lsquo;S COACHING
